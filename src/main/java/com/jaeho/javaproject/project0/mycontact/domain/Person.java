@@ -1,9 +1,11 @@
 package com.jaeho.javaproject.project0.mycontact.domain;
 
+import com.jaeho.javaproject.project0.mycontact.domain.dho.Birthday;
 import com.sun.istack.NotNull;
 import lombok.*;
 
 import javax.persistence.*;
+import javax.validation.Valid;
 import java.time.LocalDate;
 
 @Entity
@@ -30,7 +32,9 @@ public class Person {
 
     private String address;
 
-    private LocalDate birthday;
+    @Embedded
+    @Valid
+    private Birthday birthday;
 
     private String job;
 
