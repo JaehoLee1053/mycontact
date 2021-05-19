@@ -1,5 +1,6 @@
 package com.jaeho.javaproject.project0.mycontact.controller;
 
+import com.jaeho.javaproject.project0.mycontact.controller.dto.PersonDto;
 import com.jaeho.javaproject.project0.mycontact.domain.Person;
 import com.jaeho.javaproject.project0.mycontact.repository.PersonRepository;
 import com.jaeho.javaproject.project0.mycontact.service.PersonService;
@@ -28,5 +29,17 @@ public class PersonController {
     public void postPerson(@RequestBody Person person) {
         personService.put(person);
         log.info("person -> {}", personRepository.findAll());
+    }
+
+    @PutMapping("/{id}")
+    public void modifyPerson(@PathVariable long id, @RequestBody PersonDto personDto) {
+        personService.modify(id, personDto);
+
+        log.info("person -> {}", personRepository.findAll());
+    }
+
+    @PatchMapping("/{id}")
+    public void modifyPerson(@PathVariable long id, String name) {
+        personService.modify(id, name);
     }
 }

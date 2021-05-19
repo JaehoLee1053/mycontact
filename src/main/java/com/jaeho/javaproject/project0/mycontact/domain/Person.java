@@ -1,8 +1,11 @@
 package com.jaeho.javaproject.project0.mycontact.domain;
 
+import com.jaeho.javaproject.project0.mycontact.controller.dto.PersonDto;
 import com.jaeho.javaproject.project0.mycontact.domain.dho.Birthday;
 import com.sun.istack.NotNull;
 import lombok.*;
+import org.springframework.jdbc.datasource.init.ScriptUtils;
+import org.springframework.util.StringUtils;
 
 import javax.persistence.*;
 import javax.validation.Valid;
@@ -53,4 +56,29 @@ public class Person {
     @ToString.Exclude
     private Block block;
 
+    public void set(PersonDto personDto) {
+        if (personDto.getAge() != 0) {
+            this.setAge(personDto.getAge());
+        }
+
+        if(!StringUtils.isEmpty(personDto.getHobby())){
+            this.setHobby(personDto.getHobby());
+        }
+
+        if(!StringUtils.isEmpty(personDto.getBloodType())) {
+            this.setBloodType(personDto.getBloodType());
+        }
+
+        if(!StringUtils.isEmpty(personDto.getAddress())) {
+            this.setAddress(personDto.getAddress());
+        }
+
+        if(!StringUtils.isEmpty(personDto.getJob())) {
+            this.setJob(personDto.getJob());
+        }
+
+        if(!StringUtils.isEmpty(personDto.getPhoneNumber())) {
+            this.setPhoneNumber(personDto.getPhoneNumber());
+        }
+    }
 }
