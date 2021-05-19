@@ -4,6 +4,8 @@ import com.jaeho.javaproject.project0.mycontact.controller.dto.PersonDto;
 import com.jaeho.javaproject.project0.mycontact.domain.dho.Birthday;
 import com.sun.istack.NotNull;
 import lombok.*;
+import org.hibernate.annotations.ColumnDefault;
+import org.hibernate.annotations.Where;
 import org.springframework.jdbc.datasource.init.ScriptUtils;
 import org.springframework.util.StringUtils;
 
@@ -18,6 +20,7 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @RequiredArgsConstructor
 @Data
+@Where(clause = "deleted = false")
 public class Person {
 
     @Id
@@ -51,6 +54,9 @@ public class Person {
 
     @ToString.Exclude
     private String phoneNumber;
+
+    @ColumnDefault("0")
+    private boolean deleted;
 
     @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
     @ToString.Exclude
