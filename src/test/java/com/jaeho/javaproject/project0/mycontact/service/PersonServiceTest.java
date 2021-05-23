@@ -1,6 +1,5 @@
 package com.jaeho.javaproject.project0.mycontact.service;
 
-import com.jaeho.javaproject.project0.mycontact.domain.Block;
 import com.jaeho.javaproject.project0.mycontact.domain.Person;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,15 +15,6 @@ import static org.junit.jupiter.api.Assertions.*;
 class PersonServiceTest {
     @Autowired
     private PersonService personService;
-    @Test
-    void getPeopleExcludeBlock() {
-        List<Person> result = personService.getPeopleExcludeBlock();
-
-        assertEquals(3, result.size());
-        assertEquals("martin", result.get(0).getName());
-        assertEquals("david", result.get(1).getName());
-        assertEquals("benny", result.get(2).getName());
-    }
 
     @Test
     void getPeopleByName() {
