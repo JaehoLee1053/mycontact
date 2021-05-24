@@ -28,14 +28,11 @@ public class PersonController {
     @ResponseStatus(HttpStatus.CREATED)
     public void postPerson(@RequestBody Person person) {
         personService.put(person);
-        log.info("person -> {}", personRepository.findAll());
     }
 
     @PutMapping("/{id}")
     public void modifyPerson(@PathVariable long id, @RequestBody PersonDto personDto) {
         personService.modify(id, personDto);
-
-        log.info("person -> {}", personRepository.findAll());
     }
 
     @PatchMapping("/{id}")
@@ -46,7 +43,5 @@ public class PersonController {
     @DeleteMapping("/{id}")
     public void deletePerson(@PathVariable long id) {
         personService.delete(id);
-
-        log.info("person -> {}", personRepository.findAll());
     }
 }
