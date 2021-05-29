@@ -60,7 +60,7 @@ class PersonControllerTest {
                 .andExpect(jsonPath("$.job").isEmpty())
                 .andExpect(jsonPath("$.phoneNumber").isEmpty())
                 .andExpect(jsonPath("$.deleted").value(false))
-                .andExpect(jsonPath(("$.age")).isNumber())
+                .andExpect(jsonPath("$.age").isNumber())
                 .andExpect(jsonPath("$.birthdayToday").isBoolean());
     }
 

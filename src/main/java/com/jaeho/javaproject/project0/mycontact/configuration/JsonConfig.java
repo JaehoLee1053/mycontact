@@ -7,8 +7,10 @@ import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.jaeho.javaproject.project0.mycontact.configuration.serializer.BirthdaySerializer;
 import com.jaeho.javaproject.project0.mycontact.domain.dho.Birthday;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 
+@Configuration
 public class JsonConfig {
     @Bean
     public MappingJackson2HttpMessageConverter mappingJackson2HttpMessageConverter(ObjectMapper objectMapper) {
@@ -24,7 +26,7 @@ public class JsonConfig {
         objectMapper.registerModule(new BirthdayModule());
         objectMapper.registerModule(new JavaTimeModule());
 
-        objectMapper.configure(SerializationFeature.WRITE_DATE_KEYS_AS_TIMESTAMPS, false);
+        objectMapper.configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, false);
 
         return objectMapper;
     }
